@@ -1,5 +1,7 @@
 import './App.css'
 
+import Dropdown from "./components/Dropdown";
+
 function App() {
 
   return (
@@ -18,6 +20,7 @@ function App() {
       <p className="read-the-docs">
         Check the README to get started!
       </p>
+      <Dropdown placeHolder="Select..." />
     </>
   )
 }
