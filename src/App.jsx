@@ -1,8 +1,6 @@
 import './App.css';
 
-import Dropdown from './components/Dropdown';
-
-const API_URL = 'http://localhost:3001/';
+import Dropdown from './Dropdown';
 
 function App() {
   const options = [
@@ -16,6 +14,56 @@ function App() {
     { value: 'grey', label: 'Grey' },
   ];
 
+  function fetchData() {
+    fetch('http://localhost:3001/api/cptcodes')
+      .then((response) => {
+        if (!response.ok) {
+          throw Error('ERROR');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        const codes = data.map((cptcodes) => {
+          return `${cptcodes.code}`;
+        });
+        console.log(codes);
+        // document.querySelector('#app').insertAdjacentHTML('afterbegin', codes);
+        return codes;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  fetchData();
+
+  // function postData() {
+  //   fetch(API_URL + 'cptcodes?_embed=costs', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+
+  //     })
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw Error('ERROR');
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+
+  // postData();
+
   return (
     <>
       <div>
@@ -27,15 +75,21 @@ function App() {
           />
         </a>
       </div>
-      <h1>UMB React Project</h1>
+      <h1>UMB React Select Dropdown Component</h1>
       <div className='card'>
         <p>
           TODO: Create CPT select dropdown component and display the average
           cost.
         </p>
       </div>
-      <p className='read-the-docs'>Check the README to get started!</p>
-      <Dropdown placeHolder='Select...' options={options} />
+
+      <div>
+        <div display='flex'>
+          <div id='app'></div>
+          <Dropdown placeHolder='Select a code' options={options} />
+          <h3 id='averageCost'></h3>
+        </div>
+      </div>
     </>
   );
 }

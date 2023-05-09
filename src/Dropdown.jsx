@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 // import React from 'react';
 
 import { useEffect, useState } from 'react';
-import '../Dropdown.css';
+import './App.css';
 
 const Icon = () => {
   return (
@@ -16,16 +17,17 @@ const Dropdown = ({ placeHolder, options }) => {
 
   useEffect(() => {
     const handler = () => setShowMenu(false);
-
     window.addEventListener('click', handler);
     return () => {
       window.removeEventListener('click', handler);
     };
   });
+  
   const handleInputClick = (e) => {
     e.stopPropagation();
     setShowMenu(!showMenu);
   };
+
   const getDisplay = () => {
     return placeHolder;
   };

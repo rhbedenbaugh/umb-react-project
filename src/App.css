@@ -15,7 +15,7 @@
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.uhealth:hover {
-  filter: drop-shadow(0 0 2em #C45B6Aaa);
+  filter: drop-shadow(0 0 2em #7eddd3);
 }
 
 @keyframes logo-spin {
@@ -39,4 +39,41 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* dropdown styling */
+.dropdown-container {
+  text-align: left;
+  border: 1px solid #ccc;
+  position: relative;
+  border-radius: 5px;
+}
+
+.dropdown-input {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.dropdown-menu {
+  color:#414042;
+  position: absolute;
+  transform: translate(4px);
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: auto;
+  max-height: 140px;
+  background-color: #fff;
+}
+
+.dropdown-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.15);
 }
