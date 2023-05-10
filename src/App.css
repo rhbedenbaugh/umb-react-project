@@ -77,3 +77,18 @@
 .dropdown-item:hover {
   background-color: rgba(0, 0, 0, 0.15);
 }
+
+/* form styling */
+.form-container {
+  align-items: center;
+  max-width: 300px;
+  text-align: center;
+  border: 1px solid #ccc;
+  position: relative;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.form-input {
+  align-items:center;
+}

@@ -11,8 +11,21 @@ const Icon = () => {
     </svg>
   );
 };
+const API_URL = 'http://localhost:3001/';
 
-const Dropdown = ({ placeHolder, options }) => {
+function Dropdown({ placeHolder, options }) {
+  const [cptCodes, setCptCodes] = useState([]);
+  
+  useEffect(() => {
+    async function getCodes() {
+      
+      const response = await fetch(`${API_URL}`+'cptcodes');
+      const data = await response.json(response);
+      setCptCodes(data);
+      }
+      getCodes();
+    },[placeHolder, options ]);
+  
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
@@ -22,7 +35,7 @@ const Dropdown = ({ placeHolder, options }) => {
       window.removeEventListener('click', handler);
     };
   });
-  
+
   const handleInputClick = (e) => {
     e.stopPropagation();
     setShowMenu(!showMenu);
@@ -31,6 +44,7 @@ const Dropdown = ({ placeHolder, options }) => {
   const getDisplay = () => {
     return placeHolder;
   };
+  // console.log(codes);
 
   return (
     <div className='dropdown-container'>
@@ -53,6 +67,6 @@ const Dropdown = ({ placeHolder, options }) => {
       )}
     </div>
   );
-};
+}
 
 export default Dropdown;

@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 
 import Dropdown from './Dropdown';
+import Form from './Form';
 
 function App() {
   const options = [
@@ -13,39 +15,33 @@ function App() {
     { value: 'purple', label: 'Purple' },
     { value: 'grey', label: 'Grey' },
   ];
-
-  function fetchData() {
-    fetch('http://localhost:3001/api/cptcodes')
-      .then((response) => {
-        if (!response.ok) {
-          throw Error('ERROR');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        const codes = data.map((cptcodes) => {
-          return `${cptcodes.code}`;
-        });
-        console.log(codes);
-        // document.querySelector('#app').insertAdjacentHTML('afterbegin', codes);
-        return codes;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  let API_URL = 'http://localhost:3001/api/'
+  let [codes, setCodes] = useState([]);
+  // console.log(codes)
+  async function getCodes() {
+    const response = await fetch(API_URL + 'cptcodes');
+    const data = await response.json();
+    codes = await data.map((cptcodes) => {
+      return cptcodes.code;
+    });
+    console.log(codes);
+    return codes;
   }
-
-  fetchData();
-
+  
+  getCodes();
+  
+  useEffect(() => setCodes(codes),[codes])
   // function postData() {
-  //   fetch(API_URL + 'cptcodes?_embed=costs', {
+  //   fetch(API_URL + '/costs', {
   //     method: 'POST',
   //     headers: {
   //       'Content-Type': 'application/json'
   //     },
   //     body: JSON.stringify({
-
+  //  "cptCodeId": 1,
+  //  "cost": 305.0,
+  //  "facilityType": "Physician's Office",
+  //  "copay": 20.0
   //     })
   //   })
   //     .then((response) => {
@@ -63,6 +59,7 @@ function App() {
   // }
 
   // postData();
+  // console.log(codes);
 
   return (
     <>
@@ -76,17 +73,12 @@ function App() {
         </a>
       </div>
       <h1>UMB React Select Dropdown Component</h1>
-      <div className='card'>
-        <p>
-          TODO: Create CPT select dropdown component and display the average
-          cost.
-        </p>
-      </div>
-
+      <div className='card'></div>
       <div>
         <div display='flex'>
           <div id='app'></div>
           <Dropdown placeHolder='Select a code' options={options} />
+          <Form/>
           <h3 id='averageCost'></h3>
         </div>
       </div>
