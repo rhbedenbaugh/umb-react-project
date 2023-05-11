@@ -1,36 +1,47 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-
 import Dropdown from './Dropdown';
 import Form from './Form';
 
 function App() {
-  const options = [
-    { value: 'green', label: 'Green' },
-    { value: 'blue', label: 'Blue' },
-    { value: 'red', label: 'Red' },
-    { value: 'yellow', label: 'Yellow' },
-    { value: 'orange', label: 'Orange' },
-    { value: 'pink', label: 'Pink' },
-    { value: 'purple', label: 'Purple' },
-    { value: 'grey', label: 'Grey' },
-  ];
-  let API_URL = 'http://localhost:3001/api/'
-  let [codes, setCodes] = useState([]);
-  // console.log(codes)
-  async function getCodes() {
-    const response = await fetch(API_URL + 'cptcodes');
-    const data = await response.json();
-    codes = await data.map((cptcodes) => {
-      return cptcodes.code;
-    });
-    console.log(codes);
-    return codes;
-  }
+  const [codeList, setCodeList] = useState(null);
+  const [codes,setCodes] =useState(null);
+
+  // useEffect(() => {
+  //     fetch('http://localhost:3001/api/cptcodes?_embed=costs')
+  //     .then(res => {
+  //       return res.json();
+  //     })
+  //     .then((data)=> {
+  //       console.log(data);
+  //       setCodes(data)
+  //     })
+  //     const cptCodes = data.map((cptCode) => {
+  //       return {id:cptCode.id, value:cptCode.code, label:cptCode.code};
+  //     }, []);
+  //     setCodes(cptCodes)
+  //     console.log(cptCodes);
+  //     return cptCodes;
+  //   });
+    // getCodes();
+  // }, []);
+
+  // useEffect(() => {
+  //   getAverageCost();
+  // }, []);
+
   
-  getCodes();
-  
-  useEffect(() => setCodes(codes),[codes])
+  // const getAverageCost = async () => {
+  //   const response = await fetch('http://localhost:3001/api/costs');
+  //   const data = await response.json();
+  //   const averageCost = await data.map((cost) => {
+  //     return {id:cost.id, code:cost.cptCodeId, cost:cost.cost};
+  //   });
+  //   // setCodes(cptCodes)
+  //   console.log(averageCost);
+  //   return averageCost;
+  // }
+  // useEffect(() => setCodes(cptCodes),[codes])
   // function postData() {
   //   fetch(API_URL + '/costs', {
   //     method: 'POST',
@@ -72,18 +83,18 @@ function App() {
           />
         </a>
       </div>
-      <h1>UMB React Select Dropdown Component</h1>
+      <h2>UMB React Select Dropdown Component</h2>
       <div className='card'></div>
       <div>
         <div display='flex'>
           <div id='app'></div>
-          <Dropdown placeHolder='Select a code' options={options} />
+          <Dropdown placeHolder='Select a code' options={codes} />
           <Form/>
           <h3 id='averageCost'></h3>
         </div>
       </div>
     </>
   );
-}
+  }
 
 export default App;

@@ -1,28 +1,51 @@
-import './App.css';
+import './App';
+import { useState } from 'react';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+// import Box from '@mui/material/Box';
+// let name ='mario';
 
 function Form() {
+  const [name, setName] = useState('mario');
+  
+
   return (
-    <>
-      <form className='form-container' method='POST'>
-        <input type='hidden' name='cptCodeId' value='code' />
-        <div className='form-input'>
-          <label htmlFor='cost'>Cost</label>
-          <input type='number' name='cost' id='cost' min='1' required />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='facilityType'>Facility Type</label>
-          <input type='text' name='facilityType' id='facilityType' required />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='copay'>Copay</label>
-          <input type='number' name='copay' id='copay' min='1' required />
-        </div>
-        <div>
-          <button type='reset'>Reset</button>
-          <button type='submit'>Submit</button>
-        </div>
+    <div className='App'>
+      <Typography variant='h5'>Cost Submission Form</Typography>
+      <form>
+        <div>The average cost for code</div>
+        <p>{name}</p>
+        <TextField
+          style={{ width: '200px', margin: '5px' }}
+          type='text'
+          label='Cost'
+          variant='outlined'
+        />
+        <br />
+        <TextField
+          style={{ width: '200px', margin: '5px' }}
+          type='text'
+          label='Facility Type'
+          variant='outlined'
+        />
+        <br />
+        <TextField
+          style={{ width: '200px', margin: '5px' }}
+          type='text'
+          label='Copay'
+          variant='outlined'
+        />
+        <br />
+        <Button variant='contained' color='primary'
+        onClick={(e) => {
+          setName('luigi')
+          console.log('Form Submitted', e.target)
+        }}>
+          Submit
+        </Button>
       </form>
-    </>
+    </div>
   );
 }
 

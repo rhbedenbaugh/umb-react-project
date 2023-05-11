@@ -15,7 +15,7 @@
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.uhealth:hover {
-  filter: drop-shadow(0 0 2em #7eddd3);
+  filter: drop-shadow(0 0 2em #ac162c);
 }
 
 @keyframes logo-spin {
