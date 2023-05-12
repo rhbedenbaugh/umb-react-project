@@ -92,3 +92,19 @@
 .form-input {
   align-items:center;
 }
+
+.codeList {
+  /* padding: 10px 16px; */
+  margin: 0px;
+  /* border-bottom: 1px solid #fafafa; */
+}
+
+.codeList.hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.codeList p {
+  font-size: 20px;
+  color: #ac162c;
+  margin: 0px;
+}

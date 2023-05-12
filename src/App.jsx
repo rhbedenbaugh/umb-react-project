@@ -5,7 +5,7 @@ import Form from './Form';
 
 function App() {
   const [codeList, setCodeList] = useState(null);
-  const [codes,setCodes] =useState(null);
+  const [codes,setCodes] =useState([]);
 
   // useEffect(() => {
   //     fetch('http://localhost:3001/api/cptcodes?_embed=costs')
@@ -84,10 +84,8 @@ function App() {
         </a>
       </div>
       <h2>UMB React Select Dropdown Component</h2>
-      <div className='card'></div>
       <div>
         <div display='flex'>
-          <div id='app'></div>
           <Dropdown placeHolder='Select a code' options={codes} />
           <Form/>
           <h3 id='averageCost'></h3>
