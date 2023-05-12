@@ -4,9 +4,24 @@ import Dropdown from './Dropdown';
 import Form from './Form';
 
 function App() {
-  const [codeList, setCodeList] = useState(null);
-  const [codes,setCodes] =useState([]);
+  // const [codeList, setCodeList] = useState(null);
+  // const [codes,setCodes] =useState([]);
+  const [codes, setCodes] = useState([]);
 
+  useEffect(() => {
+    fetch('http://localhost:3001/api/cptcodes?_embed=costs')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const cptCodes = data.map((cptCode) => {
+          return { id: cptCode.id, value: cptCode.code, label: cptCode.code };
+        });
+        console.log(data)
+        setCodes(cptCodes);
+        
+      });
+  }, []);
   // useEffect(() => {
   //     fetch('http://localhost:3001/api/cptcodes?_embed=costs')
   //     .then(res => {

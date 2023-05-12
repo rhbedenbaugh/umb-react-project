@@ -22,7 +22,7 @@ console.log(codes)
   return (<div className='codeList'>
     {codes.map((code) => (
       <MenuItem className='code' key={code.id}>
-        <p>{code.value}</p>
+        <p>{code.code}</p>
       </MenuItem>
     ))}
   </div>);
