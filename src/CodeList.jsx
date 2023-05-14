@@ -14,13 +14,12 @@ const CodeList = () => {
           return {id: cptCode.id, value:cptCode.code, label:cptCode.code
         }});
         setCodes(cptCodes);
-        console.log(cptCodes)
       });
   }, []);
   return (
     <div className='codeList'>
       {codes.map((code) => (
-        <MenuItem className='code' key={code.id}>
+        <MenuItem className='code' key={code.id} value={code.value}>
           <p>{code.label}</p>
         </MenuItem>
       ))}

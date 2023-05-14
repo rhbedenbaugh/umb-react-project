@@ -1,14 +1,11 @@
 import './App';
-import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import AverageCost from './AverageCost';
+import AverageCost from './AverageCost/';
 
-function Form() {
-  const [name, setName] = useState('mario');
-
-    // function postData() {
+function Form(average) {
+  // function postData() {
   //   fetch(API_URL + '/costs', {
   //     method: 'POST',
   //     headers: {
@@ -39,41 +36,48 @@ function Form() {
   // console.log(codes);
 
   return (
-    <div className='App'>
-      <Typography variant='h5'>Cost Submission Form</Typography>
-      <form>
-        <div>The average cost for code <AverageCost/></div>
-        <p>{name}</p>
-        <TextField
-          style={{ width: '200px', margin: '5px' }}
-          type='text'
-          label='Cost'
-          variant='outlined'
-        />
-        <br />
-        <TextField
-          style={{ width: '200px', margin: '5px' }}
-          type='text'
-          label='Facility Type'
-          variant='outlined'
-        />
-        <br />
-        <TextField
-          style={{ width: '200px', margin: '5px' }}
-          type='text'
-          label='Copay'
-          variant='outlined'
-        />
-        <br />
-        <Button variant='contained' color='primary'
-        onClick={(e) => {
-          setName('luigi')
-          console.log('Form Submitted', e.target)
-        }}>
-          Submit
-        </Button>
-      </form>
-    </div>
+    <>
+      {average && (
+        <div className='App'>
+          <Typography variant='h5'>Cost Submission Form</Typography>
+          <form>
+            <div>
+              The average cost for code <AverageCost />
+            </div>
+            <TextField
+              style={{ width: '200px', margin: '5px' }}
+              type='text'
+              label='Cost'
+              variant='outlined'
+            />
+            <br />
+            <TextField
+              style={{ width: '200px', margin: '5px' }}
+              type='text'
+              label='Facility Type'
+              variant='outlined'
+            />
+            <br />
+            <TextField
+              style={{ width: '200px', margin: '5px' }}
+              type='text'
+              label='Copay'
+              variant='outlined'
+            />
+            <br />
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={(e) => {
+                console.log('Form Submitted', e.target);
+              }}
+            >
+              Submit
+            </Button>
+          </form>
+        </div>
+      )}
+    </>
   );
 }
 

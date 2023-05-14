@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function AverageCost(cptCodeId) {
-  const [average, setAverage] = useState(null);
+  const [average, setAverage] = useState();
 
   useEffect(() => {
     fetch(`http://localhost:3001/cptCodes/${cptCodeId}/costs`)
@@ -18,9 +18,6 @@ function AverageCost(cptCodeId) {
       }),
       [];
   });
-  {
-    average && console.log(average) && setAverage(average);
-  }
 
   if (average) {
     return average;
