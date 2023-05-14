@@ -5,27 +5,27 @@ const CodeList = () => {
   const [codes, setCodes] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/cptcodes?_embed=costs')
+    fetch('http://localhost:3001/api/cptcodes')
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         const cptCodes = data.map((cptCode) => {
-          return { id: cptCode.id, value: cptCode.code, label: cptCode.code };
-        });
-        console.log(data)
+          return {id: cptCode.id, value:cptCode.code, label:cptCode.code
+        }});
         setCodes(cptCodes);
-        
+        console.log(cptCodes)
       });
   }, []);
-console.log(codes)
-  return (<div className='codeList'>
-    {codes.map((code) => (
-      <MenuItem className='code' key={code.id}>
-        <p>{code.code}</p>
-      </MenuItem>
-    ))}
-  </div>);
+  return (
+    <div className='codeList'>
+      {codes.map((code) => (
+        <MenuItem className='code' key={code.id}>
+          <p>{code.label}</p>
+        </MenuItem>
+      ))}
+    </div>
+  );
 };
 
 export default CodeList;

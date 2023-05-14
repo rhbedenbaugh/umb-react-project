@@ -4,11 +4,39 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AverageCost from './AverageCost';
-// import Box from '@mui/material/Box';
-// let name ='mario';
 
 function Form() {
   const [name, setName] = useState('mario');
+
+    // function postData() {
+  //   fetch(API_URL + '/costs', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //  "cptCodeId": 1,
+  //  "cost": 305.0,
+  //  "facilityType": "Physician's Office",
+  //  "copay": 20.0
+  //     })
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw Error('ERROR');
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+
+  // postData();
+  // console.log(codes);
 
   return (
     <div className='App'>
