@@ -2,7 +2,6 @@ import './App';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import AverageCost from './AverageCost/';
 
 function Form(average) {
   // function postData() {
@@ -41,9 +40,6 @@ function Form(average) {
         <div className='App'>
           <Typography variant='h5'>Cost Submission Form</Typography>
           <form>
-            <div>
-              The average cost for code <AverageCost />
-            </div>
             <TextField
               style={{ width: '200px', margin: '5px' }}
               type='text'
@@ -68,11 +64,11 @@ function Form(average) {
             <Button
               variant='contained'
               color='primary'
-              onClick={(e) => {
-                console.log('Form Submitted', e.target);
+              onClick={() => {
+                console.log('Form Submitted');
               }}
             >
-              Submit
+              Submit New Cost
             </Button>
           </form>
         </div>

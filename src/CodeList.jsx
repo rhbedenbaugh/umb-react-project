@@ -11,8 +11,8 @@ const CodeList = () => {
       })
       .then((data) => {
         const cptCodes = data.map((cptCode) => {
-          return {id: cptCode.id, value:cptCode.code, label:cptCode.code
-        }});
+          return { id: cptCode.id, value: cptCode.code, label: cptCode.code };
+        });
         setCodes(cptCodes);
       });
   }, []);
